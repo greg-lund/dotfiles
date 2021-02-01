@@ -6,5 +6,5 @@ sudo apt-get install vim tmux screen
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo 'Downloading configuration files'
-wget https://raw.githubusercontent.com/greg-lund/dotfiles/main/dotfiles/vimrc -P ~/.vimrc
-wget https://raw.githubusercontent.com/greg-lund/dotfiles/main/dotfiles/tmux -P ~/.tmux.conf
+wget -O ~/.vimrc https://raw.githubusercontent.com/greg-lund/dotfiles/main/dotfiles/vimrc
+wget -O ~/.tmux.conf https://raw.githubusercontent.com/greg-lund/dotfiles/main/dotfiles/tmux
