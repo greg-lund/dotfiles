@@ -1,0 +1,107 @@
+set nocompatible
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'NLKNguyen/papercolor-theme'
+" Plugin 'Chiel92/vim-autoformat'
+" Plugin 'dense-analysis/ale'
+call vundle#end()
+
+" Enable file type based indent configuration and syntax highlighting.
+" Note that when code is pasted via the terminal, vim by default does not detect
+" that the code is pasted (as opposed to when using vim's paste mappings), which
+" leads to incorrect indentation when indent mode is on.
+" To work around this, use ":set paste" / ":set nopaste" to toggle paste mode.
+" You can also use a plugin to:
+" - enter insert mode with paste (https://github.com/tpope/vim-unimpaired)
+" - auto-detect pasting (https://github.com/ConradIrwin/vim-bracketed-paste)
+filetype plugin indent on
+
+" open all files in tabs on starting vim
+autocmd VimEnter * tab all
+
+" display options
+syntax on
+colorscheme PaperColor
+set background=dark
+set so=3
+set cursorline
+set showtabline=2
+
+"
+let mapleader=" "
+nnoremap <leader><space> :noh<cr>
+inoremap <leader>. <esc>
+
+" Numbering
+set number
+set rnu
+
+" Have insert mode behave differently
+autocmd InsertEnter * setlocal nornu
+autocmd InsertLeave * setlocal rnu
+
+autocmd InsertEnter * setlocal nohlsearch
+autocmd InsertLeave * setlocal hlsearch lz
+inoremap <silent><Esc> <Esc>:nohl<bar>set nolz<CR>
+inoremap <silent><C-c> <C-c>:nohl<bar>set nolz<CR>
+inoremap <silent><leader>. <C-c>:nohl<bar>set nolz<CR>
+
+
+" source vimrc
+nnoremap <leader>r :source ~/.vimrc<cr>
+
+" Movement
+nnoremap H ^
+nnoremap L $
+nnoremap K H
+nnoremap J L
+
+" Tab movement
+nnoremap tn gt
+nnoremap tp gT
+nnoremap tt gt
+
+" Window movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+set laststatus=2
+
+" searching
+set hlsearch
+noh
+nnoremap <leader><space> :noh<cr>
+set wildmenu
+set ignorecase
+set smartcase
+
+set mouse=a
+
+" pasting
+nnoremap <leader>p "0p
+nnoremap <leader>P "0P
+
+" Syntastic settings
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_cpp_compiler_options = '-std=c++17'
+
+
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+" pdflatex
+autocmd BufWritePost *.tex :!pdflatex -interaction=batchmode %
