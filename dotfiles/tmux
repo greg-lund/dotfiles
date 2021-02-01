@@ -1,0 +1,17 @@
+# Change prefix keys to be more comfortable
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# Change new pane bindings
+bind | split-window -h
+bind _ split-window -v
+unbind '"'
+unbind %
+
+# Change pane navigation bindings to be vim-like
+bind -n C-l select-pane -R
+bind -n C-h select-pane -L
+bind -n C-j select-pane -D
+bind -n C-k select-pane -U
+
